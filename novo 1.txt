@@ -1,0 +1,14 @@
+create table exemplo (
+	id int auto_increment,
+	nome varchar(100) not null,
+	idade int not null,
+	data_de_cadastro datetime not null,
+    PRIMARY KEY (id, data_de_cadastro)
+)partition by range (year(data_de_cadastro)) (
+	partition p0 values less than (1990),
+	partition p1 values less than (2000),
+	partition p2 values less than (2010),
+    partition p3 values less than (2020),
+    partition p4 values less than maxvalue
+);
+
